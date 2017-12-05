@@ -42,8 +42,11 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_restaurantes = new javax.swing.JTable();
         btn_comentario = new javax.swing.JButton();
+<<<<<<< HEAD
         jPanel1 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
+=======
+>>>>>>> 46724a24e818a475efedc141b15a8595ab714aaa
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Guia de Restaurantes");
@@ -58,17 +61,14 @@ public class Principal extends javax.swing.JFrame {
                 btn_buscarActionPerformed(evt);
             }
         });
-        panel1.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 230, -1, -1));
 
         jScrollPane1.setViewportView(txt_busqueda);
 
-        panel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 230, 200, -1));
 
         tabla_restaurantes.setModel(modeloTabla);
         tabla_restaurantes.setOpaque(false);
         jScrollPane2.setViewportView(tabla_restaurantes);
 
-        panel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 1120, 330));
 
         btn_comentario.setText("Dejar un comentario");
         btn_comentario.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +78,7 @@ public class Principal extends javax.swing.JFrame {
         });
         panel1.add(btn_comentario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 213, 150, 40));
 
+<<<<<<< HEAD
         jPanel1.setBackground(new java.awt.Color(25, 118, 210));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -87,6 +88,8 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 90));
+=======
+>>>>>>> 46724a24e818a475efedc141b15a8595ab714aaa
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,7 +99,6 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
         );
 
         pack();
@@ -234,7 +236,10 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_comentario;
+<<<<<<< HEAD
     private javax.swing.JPanel jPanel1;
+=======
+>>>>>>> 46724a24e818a475efedc141b15a8595ab714aaa
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_titulo;
