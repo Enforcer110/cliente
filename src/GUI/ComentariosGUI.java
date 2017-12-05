@@ -8,6 +8,7 @@ import Entidades.*;
 import Factory.Factory;
 import Procesos.*;
 import GUI.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -41,9 +42,15 @@ public class ComentariosGUI extends javax.swing.JFrame {
         lbl_tituloComentarios = new javax.swing.JLabel();
         lbl_dejaComentario = new javax.swing.JLabel();
         btn_enviar = new javax.swing.JButton();
-        txtBox_comentario = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtBox_comentarios = new javax.swing.JTextArea();
+        txt_nombre = new javax.swing.JTextField();
+        lbl_calificacion = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        lbl_cliente1 = new javax.swing.JLabel();
+        cbox_calificacion = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtBox_comentario = new javax.swing.JTextArea();
         panel_informacion = new java.awt.Panel();
         lbl_restaurante = new javax.swing.JLabel();
         lbl_nombre = new javax.swing.JLabel();
@@ -91,28 +98,68 @@ public class ComentariosGUI extends javax.swing.JFrame {
         panel_comentario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_tituloComentarios.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_tituloComentarios.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lbl_tituloComentarios.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         lbl_tituloComentarios.setForeground(new java.awt.Color(240, 240, 240));
         lbl_tituloComentarios.setText("Ultimos comentarios");
         panel_comentario.add(lbl_tituloComentarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         lbl_dejaComentario.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_dejaComentario.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lbl_dejaComentario.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         lbl_dejaComentario.setForeground(new java.awt.Color(240, 240, 240));
         lbl_dejaComentario.setText("Deja un comentario");
-        panel_comentario.add(lbl_dejaComentario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, -1, -1));
+        panel_comentario.add(lbl_dejaComentario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, -1, -1));
 
+        btn_enviar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         btn_enviar.setText("Enviar comentario");
-        panel_comentario.add(btn_enviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 680, -1, -1));
+        btn_enviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_enviarActionPerformed(evt);
+            }
+        });
+        panel_comentario.add(btn_enviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 680, -1, -1));
 
+        txtBox_comentarios.setEditable(false);
+        txtBox_comentarios.setColumns(20);
+        txtBox_comentarios.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        txtBox_comentarios.setLineWrap(true);
+        txtBox_comentarios.setRows(5);
+        jScrollPane2.setViewportView(txtBox_comentarios);
+
+        panel_comentario.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 720, 400));
+
+        txt_nombre.setBackground(new java.awt.Color(33, 150, 243));
+        txt_nombre.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        txt_nombre.setForeground(new java.awt.Color(255, 255, 255));
+        txt_nombre.setBorder(null);
+        txt_nombre.setOpaque(false);
+        panel_comentario.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 530, 340, -1));
+
+        lbl_calificacion.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        lbl_calificacion.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_calificacion.setText("Calificacion:");
+        panel_comentario.add(lbl_calificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, -1, -1));
+
+        jSeparator8.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
+        panel_comentario.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 425, 12));
+
+        lbl_cliente1.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        lbl_cliente1.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_cliente1.setText("Cliente:");
+        panel_comentario.add(lbl_cliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, -1, -1));
+
+        cbox_calificacion.setBackground(new java.awt.Color(33, 150, 243));
+        cbox_calificacion.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        cbox_calificacion.setForeground(new java.awt.Color(255, 255, 255));
+        cbox_calificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        panel_comentario.add(cbox_calificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 530, 160, -1));
+
+        txtBox_comentario.setColumns(20);
         txtBox_comentario.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        panel_comentario.add(txtBox_comentario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 720, 100));
+        txtBox_comentario.setRows(5);
+        jScrollPane3.setViewportView(txtBox_comentario);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
-
-        panel_comentario.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 720, 460));
+        panel_comentario.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 720, -1));
 
         getContentPane().add(panel_comentario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 730));
 
@@ -179,6 +226,7 @@ public class ComentariosGUI extends javax.swing.JFrame {
         jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
         panel_informacion.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 700, 425, 12));
 
+        txtBox_direccion.setEditable(false);
         txtBox_direccion.setColumns(20);
         txtBox_direccion.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         txtBox_direccion.setRows(5);
@@ -218,7 +266,47 @@ public class ComentariosGUI extends javax.swing.JFrame {
         this.lbl_coordenadas.setText("Coordenadas: "+coordenadas);
         this.lbl_clasificacion.setText("Clasificacion: "+String.valueOf(clasificacion));
         
+        this.rellenarComentarios();
     }//GEN-LAST:event_apertura
+
+    private void rellenarComentarios(){
+        BaseDatos base = factory.baseDatos();
+        ArrayList<Comentario> listaComentarios = base.obtenerComentarios(ID);
+        int numeroComentarios = listaComentarios.size();
+        
+        this.txtBox_comentarios.setText("");
+        
+        for(int i =0;i<numeroComentarios;i++){
+            Comentario comentario = listaComentarios.get(i);
+            
+            int id_restaurante = comentario.getId_restaurante();
+            String usuario = comentario.getUsuario();
+            String comentario2 = comentario.getComentario();
+            int calificacion = comentario.getCalificacion();
+            
+            this.txtBox_comentarios.setText(this.txtBox_comentarios.getText() + usuario+": "+ comentario2 + "\nCalificacion: " +calificacion +"\n\n");
+        }
+    }
+    
+    private void btn_enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_enviarActionPerformed
+        BaseDatos base = factory.baseDatos();
+        
+        int id_restaurante = ID;
+        String usuario = this.txt_nombre.getText();
+        String comentario = this.txtBox_comentario.getText();
+        int calificacion = Integer.parseInt(this.cbox_calificacion.getItemAt(this.cbox_calificacion.getSelectedIndex()));
+        
+        boolean exitoso = false;
+        exitoso = base.insertarComentario(id_restaurante, usuario, comentario, calificacion);
+        
+        if(exitoso==true){
+            this.rellenarComentarios();
+            this.txtBox_comentario.setText("");
+            this.txt_nombre.setText("");
+        }else{
+            System.out.print("Error al ingresar el comentario");
+        }      
+    }//GEN-LAST:event_btn_enviarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,8 +346,10 @@ public class ComentariosGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_enviar;
+    private javax.swing.JComboBox<String> cbox_calificacion;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -267,8 +357,10 @@ public class ComentariosGUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JLabel lbl_calificacion;
     private javax.swing.JLabel lbl_clasificacion;
+    private javax.swing.JLabel lbl_cliente1;
     private javax.swing.JLabel lbl_coordenadas;
     private javax.swing.JLabel lbl_dejaComentario;
     private javax.swing.JLabel lbl_direccion;
@@ -282,7 +374,9 @@ public class ComentariosGUI extends javax.swing.JFrame {
     private java.awt.Panel panel2;
     private javax.swing.JPanel panel_comentario;
     private java.awt.Panel panel_informacion;
-    private javax.swing.JTextField txtBox_comentario;
+    private javax.swing.JTextArea txtBox_comentario;
+    private javax.swing.JTextArea txtBox_comentarios;
     private javax.swing.JTextArea txtBox_direccion;
+    private javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
 }

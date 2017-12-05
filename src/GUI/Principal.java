@@ -36,23 +36,21 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         panel1 = new java.awt.Panel();
-        lbl_titulo = new javax.swing.JLabel();
         btn_buscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_busqueda = new javax.swing.JTextPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_restaurantes = new javax.swing.JTable();
         btn_comentario = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lbl_titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Guia de Restaurantes");
+        setResizable(false);
 
-        panel1.setBackground(new java.awt.Color(250, 250, 250));
+        panel1.setBackground(new java.awt.Color(255, 255, 255));
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbl_titulo.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
-        lbl_titulo.setText("Guia de Restaurantes");
-        panel1.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         btn_buscar.setText("Buscar por nombre");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +65,7 @@ public class Principal extends javax.swing.JFrame {
         panel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 230, 200, -1));
 
         tabla_restaurantes.setModel(modeloTabla);
+        tabla_restaurantes.setOpaque(false);
         jScrollPane2.setViewportView(tabla_restaurantes);
 
         panel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 1120, 330));
@@ -78,6 +77,16 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         panel1.add(btn_comentario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 213, 150, 40));
+
+        jPanel1.setBackground(new java.awt.Color(25, 118, 210));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl_titulo.setFont(new java.awt.Font("Roboto", 0, 36)); // NOI18N
+        lbl_titulo.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_titulo.setText("Guia de Restaurantes");
+        jPanel1.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -225,6 +234,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_comentario;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_titulo;

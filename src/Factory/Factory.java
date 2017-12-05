@@ -21,8 +21,8 @@ public class Factory {
     }
     
     //Instancia de Entidades
-    public Estudiante estudiante(String id_carnet, String nombre, int edad){
-        return new Estudiante(id_carnet, nombre, edad);
+    public Comentario comentario(int id_restaurante, String usuario, String comentario, int calificacion){
+        return new Comentario(id_restaurante, usuario, comentario, calificacion);
     }
     
     public Restaurante restaurante(int id, String nombre, String tipoComida, String direccion, int telefono, String horarios, String propietarios, String coordenadas, Double clasificacion){

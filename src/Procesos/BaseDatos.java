@@ -62,6 +62,41 @@ public class BaseDatos {
     return exitoso;
     }
     
+    public boolean insertarComentario(int id_restaurante, String usuario, String comentario, int calificacion){
+        boolean exitoso = false;
+        factory = new Factory();
+        try {
+            conn = DriverManager.getConnection(url, username, password);
+            String SQLQuery = "INSERT INTO public.comentarios (id_restaurante, usuario, comentario, calificacion) VALUES (?,?,?,?)";
+            st = conn.prepareStatement(SQLQuery);
+            //Comentario coment = factory.comentario(id_restaurante, usuario, comentario, calificacion);
+            //El setString sirve para saber que tipo de valor le va a pasar; el # sirve para saber de que posicion es, y lo otro es el valor que le va a pasar
+            
+            st.setInt(1, id_restaurante);
+            st.setString(2, usuario);
+            st.setString(3, comentario);
+            st.setInt(4, calificacion);
+            st.executeUpdate();
+            
+            exitoso = true;
+            
+            
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            exitoso = false;
+        }
+        finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                exitoso = false;
+                ex.printStackTrace();
+            }
+        }
+    return exitoso;
+    }
+    
     public boolean modificarRestaurante(int id, String nombre, String tipoComida, String direccion, int telefono, String horarios, String propietarios, String coordenadas, Double clasificacion){
         boolean exitoso = false;
         factory = new Factory();
@@ -195,6 +230,39 @@ public class BaseDatos {
             }
         }
         return listaRestaurantesBD;
+    }
+    
+    public ArrayList<Comentario> obtenerComentarios(int id_restorant){
+        factory = new Factory();
+        ArrayList<Comentario> listaComentarios = new ArrayList<Comentario>();
+        try {
+            conn = DriverManager.getConnection(url, username, password);
+            String SQLQuery = "SELECT * FROM public.comentarios WHERE id_restaurante="+id_restorant+"";
+            st = conn.prepareStatement(SQLQuery);
+            rs = st.executeQuery();
+            
+            while(rs.next()){
+                
+                int id_restaurante = rs.getInt("id_restaurante");
+                String usuario = rs.getString("usuario");
+                String comentario = rs.getString("comentario");
+                int calificacion = rs.getInt("calificacion");
+                         
+                Comentario coment = factory.comentario(id_restaurante, usuario, comentario, calificacion);
+                listaComentarios.add(coment);
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return listaComentarios;
     }
     
     public ArrayList<Restaurante> obtenerRestaurantesBYName(String busqueda){
