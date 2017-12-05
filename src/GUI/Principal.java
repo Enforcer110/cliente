@@ -24,6 +24,8 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         cargarColumnasTabla();
         cargarModeloTabla();
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**

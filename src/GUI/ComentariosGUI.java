@@ -26,6 +26,8 @@ public class ComentariosGUI extends javax.swing.JFrame {
         factory = new Factory();
         initComponents();
         this.ID = ID_restaurante;
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
