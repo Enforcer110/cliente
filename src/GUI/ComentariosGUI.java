@@ -39,7 +39,6 @@ public class ComentariosGUI extends javax.swing.JFrame {
 
         panel2 = new java.awt.Panel();
         panel_comentario = new javax.swing.JPanel();
-        lbl_tituloComentarios = new javax.swing.JLabel();
         lbl_dejaComentario = new javax.swing.JLabel();
         btn_enviar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -70,6 +69,8 @@ public class ComentariosGUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtBox_direccion = new javax.swing.JTextArea();
         lbl_clasificacion = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lbl_tituloComentarios = new javax.swing.JLabel();
 
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
         panel2.setLayout(panel2Layout);
@@ -97,12 +98,6 @@ public class ComentariosGUI extends javax.swing.JFrame {
         panel_comentario.setBackground(new java.awt.Color(33, 150, 243));
         panel_comentario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_tituloComentarios.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_tituloComentarios.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        lbl_tituloComentarios.setForeground(new java.awt.Color(240, 240, 240));
-        lbl_tituloComentarios.setText("Ultimos comentarios");
-        panel_comentario.add(lbl_tituloComentarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
         lbl_dejaComentario.setBackground(new java.awt.Color(255, 255, 255));
         lbl_dejaComentario.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         lbl_dejaComentario.setForeground(new java.awt.Color(240, 240, 240));
@@ -123,9 +118,10 @@ public class ComentariosGUI extends javax.swing.JFrame {
         txtBox_comentarios.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         txtBox_comentarios.setLineWrap(true);
         txtBox_comentarios.setRows(5);
+        txtBox_comentarios.setWrapStyleWord(true);
         jScrollPane2.setViewportView(txtBox_comentarios);
 
-        panel_comentario.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 720, 400));
+        panel_comentario.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 720, 440));
 
         txt_nombre.setBackground(new java.awt.Color(33, 150, 243));
         txt_nombre.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
@@ -139,8 +135,7 @@ public class ComentariosGUI extends javax.swing.JFrame {
         lbl_calificacion.setText("Calificacion:");
         panel_comentario.add(lbl_calificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, -1, -1));
 
-        jSeparator8.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator8.setForeground(new java.awt.Color(255, 255, 255));
         panel_comentario.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 425, 12));
 
         lbl_cliente1.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
@@ -157,11 +152,12 @@ public class ComentariosGUI extends javax.swing.JFrame {
         txtBox_comentario.setColumns(20);
         txtBox_comentario.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         txtBox_comentario.setRows(5);
+        txtBox_comentario.setWrapStyleWord(true);
         jScrollPane3.setViewportView(txtBox_comentario);
 
         panel_comentario.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 720, -1));
 
-        getContentPane().add(panel_comentario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 730));
+        getContentPane().add(panel_comentario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 760, 730));
 
         panel_informacion.setBackground(new java.awt.Color(255, 255, 255));
         panel_informacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -229,7 +225,9 @@ public class ComentariosGUI extends javax.swing.JFrame {
         txtBox_direccion.setEditable(false);
         txtBox_direccion.setColumns(20);
         txtBox_direccion.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        txtBox_direccion.setLineWrap(true);
         txtBox_direccion.setRows(5);
+        txtBox_direccion.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtBox_direccion);
 
         panel_informacion.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 296, 420, 120));
@@ -238,7 +236,33 @@ public class ComentariosGUI extends javax.swing.JFrame {
         lbl_clasificacion.setText("Clasificacion: 0.0");
         panel_informacion.add(lbl_clasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
 
-        getContentPane().add(panel_informacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 470, 730));
+        getContentPane().add(panel_informacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 70, 470, 730));
+
+        jPanel1.setBackground(new java.awt.Color(25, 118, 210));
+
+        lbl_tituloComentarios.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_tituloComentarios.setFont(new java.awt.Font("Roboto", 0, 36)); // NOI18N
+        lbl_tituloComentarios.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_tituloComentarios.setText("Ultimos comentarios");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(lbl_tituloComentarios)
+                .addContainerGap(861, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_tituloComentarios)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -347,6 +371,7 @@ public class ComentariosGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_enviar;
     private javax.swing.JComboBox<String> cbox_calificacion;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
