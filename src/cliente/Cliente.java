@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package cliente;
+import Entidades.*;
+import Factory.Factory;
+import Procesos.*;
+import GUI.*;
 
 /**
  *
@@ -14,8 +18,14 @@ public class Cliente {
     /**
      * @param args the command line arguments
      */
+   private static Factory factory;
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        factory = new Factory();
+
+        Principal principal = factory.principal();
+        principal.setVisible(true);
     }
     
 }

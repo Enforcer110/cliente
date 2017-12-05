@@ -4,18 +4,26 @@
  * and open the template in the editor.
  */
 package GUI;
-
+import Entidades.*;
+import Factory.Factory;
+import Procesos.*;
+import GUI.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author carlo
  */
 public class Principal extends javax.swing.JFrame {
-
+    private static Factory factory;
     /**
      * Creates new form Principal
      */
     public Principal() {
+        factory = new Factory();
         initComponents();
+        cargarColumnasTabla();
+        cargarModeloTabla();
     }
 
     /**
@@ -28,90 +36,156 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         panel1 = new java.awt.Panel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        lbl_titulo = new javax.swing.JLabel();
+        btn_buscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txt_busqueda = new javax.swing.JTextPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla_restaurantes = new javax.swing.JTable();
+        btn_comentario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Guia de Restaurantes");
 
         panel1.setBackground(new java.awt.Color(250, 250, 250));
+        panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 3, 36)); // NOI18N
-        jLabel1.setText("Restaurantes de mierda");
+        lbl_titulo.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        lbl_titulo.setText("Guia de Restaurantes");
+        panel1.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        jButton1.setText("Boton para tu madre");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_buscar.setText("Buscar por nombre");
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_buscarActionPerformed(evt);
             }
         });
+        panel1.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 230, -1, -1));
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setViewportView(txt_busqueda);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        panel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 230, 200, -1));
 
-            },
-            new String [] {
+        tabla_restaurantes.setModel(modeloTabla);
+        jScrollPane2.setViewportView(tabla_restaurantes);
 
+        panel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 1120, 330));
+
+        btn_comentario.setText("Dejar un comentario");
+        btn_comentario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_comentarioActionPerformed(evt);
             }
-        ));
-        jScrollPane2.setViewportView(jTable1);
-
-        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
-        panel1.setLayout(panel1Layout);
-        panel1Layout.setHorizontalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(84, 84, 84))
-            .addGroup(panel1Layout.createSequentialGroup()
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1065, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jLabel1)))
-                .addContainerGap(128, Short.MAX_VALUE))
-        );
-        panel1Layout.setVerticalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jLabel1)
-                .addGap(210, 210, 210)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
-        );
+        });
+        panel1.add(btn_comentario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 213, 150, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1161, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    DefaultTableModel modeloTabla = new DefaultTableModel();
+    
+    private void cargarColumnasTabla(){
+        
+        modeloTabla.addColumn("ID");
+        modeloTabla.addColumn("Nombre");
+        modeloTabla.addColumn("Tipo de Comida");
+        modeloTabla.addColumn("Direccion");
+        modeloTabla.addColumn("Telefono");
+        modeloTabla.addColumn("Horarios");
+        modeloTabla.addColumn("Propiedades");
+        modeloTabla.addColumn("Coordenadas");
+        modeloTabla.addColumn("Clasificacion");
+  
+    }
+    
+    private void cargarModeloTabla(){
+        BaseDatos base = factory.baseDatos();
+        ArrayList<Restaurante> listaRestaurantes = base.obtenerRestaurantes();
+        
+        int numRestaurantes = listaRestaurantes.size();
+        modeloTabla.setNumRows(numRestaurantes);
+        
+        for(int i =0;i<numRestaurantes;i++){
+            Restaurante restaurantes = listaRestaurantes.get(i);
+                    
+            int id = restaurantes.getId();
+            String nombre = restaurantes.getNombre();
+            String tipoComida = restaurantes.getTipoComida();
+            String direccion = restaurantes.getDireccion();
+            int telefono = restaurantes.getTelefono(); 
+            String horarios = restaurantes.getHorarios();
+            String propietarios = restaurantes.getPropietarios();
+            String coordenadas = restaurantes.getCoordenadas();
+            Double clasificacion = restaurantes.getClasificacion();  
+            
+            modeloTabla.setValueAt(id, i, 0);
+            modeloTabla.setValueAt(nombre, i, 1);
+            modeloTabla.setValueAt(tipoComida, i, 2);
+            modeloTabla.setValueAt(direccion, i, 3);
+            modeloTabla.setValueAt(telefono, i, 4);
+            modeloTabla.setValueAt(horarios, i, 5);
+            modeloTabla.setValueAt(propietarios, i, 6);
+            modeloTabla.setValueAt(coordenadas, i, 7);
+            modeloTabla.setValueAt(clasificacion, i, 8);
+            
+        }
+    }
+    
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+        BaseDatos base = factory.baseDatos();
+        String busqueda = this.txt_busqueda.getText();
+        ArrayList<Restaurante> listaRestaurantes = base.obtenerRestaurantesBYName(busqueda);
+        
+        int numRestaurantes = listaRestaurantes.size();
+        modeloTabla.setNumRows(numRestaurantes);
+        
+        for(int i =0;i<numRestaurantes;i++){
+            Restaurante restaurantes = listaRestaurantes.get(i);
+                    
+            int id = restaurantes.getId();
+            String nombre = restaurantes.getNombre();
+            String tipoComida = restaurantes.getTipoComida();
+            String direccion = restaurantes.getDireccion();
+            int telefono = restaurantes.getTelefono(); 
+            String horarios = restaurantes.getHorarios();
+            String propietarios = restaurantes.getPropietarios();
+            String coordenadas = restaurantes.getCoordenadas();
+            Double clasificacion = restaurantes.getClasificacion();  
+            
+            modeloTabla.setValueAt(id, i, 0);
+            modeloTabla.setValueAt(nombre, i, 1);
+            modeloTabla.setValueAt(tipoComida, i, 2);
+            modeloTabla.setValueAt(direccion, i, 3);
+            modeloTabla.setValueAt(telefono, i, 4);
+            modeloTabla.setValueAt(horarios, i, 5);
+            modeloTabla.setValueAt(propietarios, i, 6);
+            modeloTabla.setValueAt(coordenadas, i, 7);
+            modeloTabla.setValueAt(clasificacion, i, 8);
+            
+        }
+    }//GEN-LAST:event_btn_buscarActionPerformed
+
+    private void btn_comentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_comentarioActionPerformed
+        int columna = 0;
+        int row = tabla_restaurantes.getSelectedRow();
+        String valorS = tabla_restaurantes.getModel().getValueAt(row, columna).toString();
+        int valorInt = Integer.parseInt(valorS);
+        
+        ComentariosGUI comentarios = factory.comentariosForm(valorInt);
+        comentarios.setVisible(true);
+        
+    }//GEN-LAST:event_btn_comentarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,12 +223,13 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btn_buscar;
+    private javax.swing.JButton btn_comentario;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JLabel lbl_titulo;
     private java.awt.Panel panel1;
+    private javax.swing.JTable tabla_restaurantes;
+    private javax.swing.JTextPane txt_busqueda;
     // End of variables declaration//GEN-END:variables
 }
