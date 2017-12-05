@@ -46,6 +46,13 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
 =======
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 >>>>>>> 46724a24e818a475efedc141b15a8595ab714aaa
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,14 +68,17 @@ public class Principal extends javax.swing.JFrame {
                 btn_buscarActionPerformed(evt);
             }
         });
+        panel1.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 230, -1, -1));
 
         jScrollPane1.setViewportView(txt_busqueda);
 
+        panel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 230, 200, -1));
 
         tabla_restaurantes.setModel(modeloTabla);
         tabla_restaurantes.setOpaque(false);
         jScrollPane2.setViewportView(tabla_restaurantes);
 
+        panel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 1120, 270));
 
         btn_comentario.setText("Dejar un comentario");
         btn_comentario.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +99,24 @@ public class Principal extends javax.swing.JFrame {
 
         panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 90));
 =======
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/9.png"))); // NOI18N
+        panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, -30, 270, 320));
+        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/cold_drink_20594.png"))); // NOI18N
+        panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/pizza_food_20620 (1).png"))); // NOI18N
+        panel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 540, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/meat_food_20586.png"))); // NOI18N
+        panel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 540, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/chicken_food_20625.png"))); // NOI18N
+        panel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/cattle_kitchen_food_20596.png"))); // NOI18N
+        panel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 540, -1, -1));
 >>>>>>> 46724a24e818a475efedc141b15a8595ab714aaa
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -99,6 +127,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -239,6 +268,13 @@ public class Principal extends javax.swing.JFrame {
 <<<<<<< HEAD
     private javax.swing.JPanel jPanel1;
 =======
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
 >>>>>>> 46724a24e818a475efedc141b15a8595ab714aaa
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
